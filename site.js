@@ -19,6 +19,14 @@ function copiaVelha(txt) {
   t.remove();
 }
 
+// vídeos agendados aparecem sozinhos na lista quando chega a hora
+document.querySelectorAll(".card[data-sai]").forEach(function (c) {
+  if (Date.now() >= Date.parse(c.dataset.sai)) {
+    c.removeAttribute("data-sai");
+    c.hidden = false;
+  }
+});
+
 // busca na página inicial
 var busca = document.getElementById("busca");
 if (busca) {
@@ -26,7 +34,7 @@ if (busca) {
     var q = busca.value.trim().toLowerCase();
     var achou = 0;
     document.querySelectorAll(".card").forEach(function (c) {
-      var ok = !q || c.dataset.busca.indexOf(q) !== -1;
+      var ok = !c.dataset.sai && (!q || c.dataset.busca.indexOf(q) !== -1);
       c.hidden = !ok;
       if (ok) achou++;
     });
