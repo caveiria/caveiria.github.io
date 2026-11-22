@@ -1,0 +1,205 @@
+:root {
+  --papel: #ECE6DD;
+  --grade: rgba(20, 18, 17, 0.07);
+  --tinta: #141211;
+  --carvao: #2E2C2B;
+  --campo: #24221F;
+  --osso: #EDE3CF;
+  --laranja: #F07F23;
+  --suave: #5b5550;
+  --cartao: #F6F1E9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papel: #1d1b1a;
+    --grade: rgba(237, 227, 207, 0.05);
+    --tinta: #EDE3CF;
+    --suave: #b3aa9d;
+    --cartao: #2A2826;
+  }
+}
+:root[data-theme="dark"] {
+  --papel: #1d1b1a;
+  --grade: rgba(237, 227, 207, 0.05);
+  --tinta: #EDE3CF;
+  --suave: #b3aa9d;
+  --cartao: #2A2826;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  color: var(--tinta);
+  background-color: var(--papel);
+  background-image:
+    linear-gradient(var(--grade) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+  background-size: 32px 32px;
+  font: 17px/1.6 Inter, system-ui, sans-serif;
+}
+a { color: inherit; }
+main { max-width: 860px; margin: 0 auto; padding: 0 16px 48px; }
+
+.topo {
+  max-width: 860px; margin: 0 auto; padding: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.marca {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+  font: 800 28px/1 "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .5px;
+}
+.marca img { width: 40px; height: 40px; object-fit: contain; }
+.marca b { color: var(--laranja); }
+.yt {
+  font: 700 15px "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: 1px;
+  text-decoration: none; border: 2px solid var(--tinta); padding: 6px 14px; border-radius: 999px;
+}
+.yt:hover { background: var(--tinta); color: var(--papel); }
+
+h1, h2 { font-family: "Barlow Condensed", sans-serif; font-weight: 800; text-transform: uppercase; line-height: 1; }
+
+.abertura, .cabeca-material {
+  display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: end; margin: 16px 0 28px;
+}
+.abertura h1 { font-size: clamp(48px, 11vw, 88px); margin: 0 0 12px; }
+.abertura h1 .sub {
+  display: block; color: var(--laranja);
+  text-decoration: underline; text-decoration-thickness: 6px; text-underline-offset: 8px;
+}
+.abertura p { margin: 0 0 18px; max-width: 46ch; color: var(--suave); }
+.pose { width: clamp(120px, 26vw, 220px); height: auto; display: block; }
+
+#busca {
+  width: 100%; max-width: 460px; font: inherit; padding: 12px 16px;
+  border: 3px solid var(--tinta); border-radius: 12px; background: var(--cartao); color: var(--tinta);
+  box-shadow: 4px 4px 0 var(--tinta);
+}
+#busca:focus { outline: 3px solid var(--laranja); outline-offset: 2px; }
+
+.lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+.card {
+  display: flex; flex-direction: column; gap: 8px; padding: 18px; text-decoration: none;
+  background: var(--cartao); border: 3px solid var(--tinta); border-radius: 14px;
+  box-shadow: 5px 5px 0 var(--tinta); transition: transform .12s, box-shadow .12s;
+}
+.card:hover { transform: translate(-2px, -2px) rotate(-.4deg); box-shadow: 7px 7px 0 var(--laranja); }
+.card strong { font: 800 24px/1.05 "Barlow Condensed", sans-serif; text-transform: uppercase; }
+.card .resumo { color: var(--suave); font-size: 15px; flex: 1; }
+.etiqueta {
+  font: 700 13px "JetBrains Mono", monospace; text-transform: uppercase; color: var(--laranja); margin: 0;
+}
+.selos { display: flex; gap: 6px; flex-wrap: wrap; }
+.selo {
+  font: 700 12px "JetBrains Mono", monospace; text-transform: uppercase;
+  background: var(--tinta); color: var(--papel); padding: 3px 8px; border-radius: 6px;
+}
+.selo.agendado { background: var(--laranja); color: #141211; }
+.vazio { text-align: center; color: var(--suave); }
+
+.material h1 { font-size: clamp(36px, 8vw, 60px); margin: 6px 0 16px; }
+.botoes { display: flex; gap: 10px; flex-wrap: wrap; }
+.botao {
+  display: inline-block; text-decoration: none; padding: 12px 18px; border-radius: 12px;
+  font: 800 18px "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .5px;
+  background: var(--laranja); color: #141211; border: 3px solid var(--tinta); box-shadow: 4px 4px 0 var(--tinta);
+}
+.botao.claro { background: var(--cartao); color: var(--tinta); }
+.botao:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--tinta); }
+
+.cartao {
+  background: var(--cartao); border: 3px solid var(--tinta); border-radius: 16px;
+  box-shadow: 6px 6px 0 var(--tinta); padding: 8px 24px 20px;
+}
+.cartao h2 {
+  font-size: 26px; margin: 26px 0 10px; display: inline-block;
+  border-bottom: 5px solid var(--laranja); padding-bottom: 2px;
+}
+.cartao p, .cartao li { overflow-wrap: anywhere; }
+.cartao ul { padding-left: 22px; }
+.cartao a { color: var(--laranja); }
+
+.prompt {
+  background: var(--carvao); color: #EDE3CF; border-radius: 12px; margin: 14px 0;
+  border: 3px solid #141211; overflow: hidden;
+}
+.prompt pre {
+  margin: 0; padding: 16px 18px 10px; white-space: pre-wrap; overflow-wrap: anywhere;
+  font: 500 15px/1.6 "JetBrains Mono", Consolas, monospace;
+}
+.copiar {
+  display: block; margin: 0 18px 16px auto; cursor: pointer;
+  font: 700 14px "JetBrains Mono", monospace; text-transform: uppercase;
+  background: var(--laranja); color: #141211; border: 0; border-radius: 8px; padding: 8px 14px;
+}
+.copiar.ok { background: #EDE3CF; }
+
+.voltar { display: inline-block; margin-top: 24px; font-weight: 600; }
+footer { text-align: center; color: var(--suave); font-size: 14px; padding: 24px 16px 40px; }
+
+@media (max-width: 560px) {
+  .abertura, .cabeca-material { grid-template-columns: 1fr; position: relative; }
+  .pose { position: absolute; right: 0; top: 0; width: 88px; }
+  .abertura h1, .material h1 { padding-right: 92px; }
+  .material .etiqueta { padding-right: 92px; }
+  .abertura .pose { width: 72px; }
+  .abertura h1 { margin-bottom: 22px; }
+  .cartao { padding: 4px 16px 16px; }
+}
+
+/* ===== animações (só com movimento permitido: classe .anim) ===== */
+@keyframes subir { from { opacity: 0; transform: translateY(26px) rotate(var(--giro, 0deg)); } to { opacity: 1; transform: none; } }
+@keyframes riscar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes acenar { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-5deg); } 40% { transform: rotate(3deg); } 60% { transform: rotate(-3deg); } 80% { transform: rotate(1deg); } }
+@keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes carimbo { 0% { opacity: 0; transform: scale(2.2) rotate(-14deg); } 70% { opacity: 1; transform: scale(.92) rotate(-3deg); } 100% { opacity: 1; transform: rotate(-3deg); } }
+@keyframes piscar { 50% { opacity: 0; } }
+@keyframes pulo { 0% { transform: scale(1); } 40% { transform: scale(1.15) rotate(-3deg); } 100% { transform: scale(1); } }
+@keyframes faisca { from { opacity: 1; transform: translate(0, 0) scale(1); } to { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.4); } }
+
+.anim .abertura h1 .linha, .anim .abertura h1 .sub, .anim .abertura p, .anim #busca,
+.anim .cabeca-material > div > * { opacity: 0; animation: subir .6s cubic-bezier(.2,.9,.3,1.2) forwards; }
+.anim .abertura h1 .sub { display: block; animation-delay: .15s; text-decoration: none; position: relative; width: fit-content; }
+.anim .abertura h1 .sub::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 6px; background: var(--laranja);
+  transform: scaleX(0); transform-origin: left; animation: riscar .5s .7s ease-out forwards;
+}
+.anim .abertura p { animation-delay: .3s; }
+.anim #busca { animation-delay: .45s; }
+.anim .cabeca-material > div > :nth-child(2) { animation-delay: .1s; }
+.anim .cabeca-material > div > :nth-child(3) { animation-delay: .2s; }
+
+/* esqueleto: entra, acena e fica flutuando */
+.anim .abertura .pose { transform-origin: 50% 100%; animation: subir .7s .2s both, acenar 1.6s 1s ease-in-out, flutuar 4s 2.6s ease-in-out infinite; }
+.anim .cabeca-material .pose { animation: subir .7s .2s both, flutuar 4s 1s ease-in-out infinite; }
+
+/* cartões caem como papel quando aparecem na tela */
+.anim .revelar { opacity: 0; }
+.anim .revelar.visto { opacity: 1; animation: subir .55s cubic-bezier(.2,.9,.3,1.2) backwards; animation-delay: var(--atraso, 0s); }
+.card:nth-child(odd) { --giro: -2deg; }
+.card:nth-child(even) { --giro: 2deg; }
+.anim .revelar.visto .selo { animation: carimbo .45s both; animation-delay: calc(var(--atraso, 0s) + .45s); }
+.anim .revelar.visto .selo + .selo { animation-delay: calc(var(--atraso, 0s) + .6s); }
+
+/* seções: sublinhado laranja risca quando chega */
+.anim .cartao h2 { border-bottom-color: transparent; position: relative; }
+.anim .cartao h2::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 5px; background: var(--laranja);
+  transform: scaleX(0); transform-origin: left; transition: transform .6s .2s ease-out;
+}
+.anim .cartao h2.visto::after { transform: scaleX(1); }
+
+/* prompt com cursor de terminal piscando */
+.prompt pre::after { content: "▌"; color: var(--laranja); margin-left: 2px; animation: piscar 1s steps(1) infinite; }
+.copiar.ok { animation: pulo .35s; }
+.faisca { position: fixed; width: 8px; height: 8px; border-radius: 2px; pointer-events: none; z-index: 9;
+  animation: faisca .7s ease-out forwards; }
+
+.botao { transition: transform .12s, box-shadow .12s; }
+.botao:hover { transform: translate(-2px, -2px) rotate(-1deg); }
+.card:active, .botao:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--tinta); }
+
+@media (prefers-reduced-motion: reduce) {
+  .prompt pre::after { animation: none; }
+  .card, .botao { transition: none; }
+}
